@@ -24,10 +24,13 @@ function getWeather(city,country){
       let weatherData = JSON.parse(this.responseText)
       console.log(weatherData);
 
-      fiveDayTitle.innerHTML = timeConverter(weatherData.list[0].dt).full
+      fiveDayTitle.innerHTML = weatherData.city.name + " " + weatherData.city.country
 
       for(let i=0; i<5; i++){
-        document.getElementById(`dayDivTemp${i+1}`).innerHTML = weatherData.list[i].main.temp
+
+        let fTempMin = Math.round(1.8*(tempMinMax(weatherData).minTemps[i]-273) + 32)
+        let fTempMax = Math.round(1.8*(tempMinMax(weatherData).maxTemps[i]-273) + 32)
+        document.getElementById(`dayDivTemp${i+1}`).innerHTML = `${fTempMax}° F / ${fTempMin}° F`
       }
 
       console.log(timeConverter(weatherData.list[0].dt));
