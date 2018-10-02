@@ -1,0 +1,25 @@
+#fiveDay{
+  min-height: 150px;
+  width:96vw;
+  background: #84A3B2;
+  border-radius: 3px;
+  margin-top: 2vh;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+#fiveDaySections{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.dayDiv{
+  height: 150px;
+  min-width: 140px;
+  border: 1px solid black;
+  width: 100px;;
+  margin: 10px;
+  min-height: 110px;
+  background: lightblue;
+}

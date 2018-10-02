@@ -1,0 +1,25 @@
+/* Search Section */
+#search{
+  background: #D9D0B1;
+  height:100px;
+  width: 100vw;
+  color: #002642;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#search label{
+  font-size: 1.8em;
+  font-weight: bold;
+}
+#search input{
+  margin-right:15px;
+  font-size: 1.6em;
+  border-radius: 3px;
+}
+#submit{
+  height:40px;
+  width:150px;
+  background: #D69C84;
+  margin-left: 15px;
+}
