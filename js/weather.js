@@ -37,8 +37,9 @@ function getWeather(city,country){
         dayDivDetails.innerHTML = "See Hourly"
         dayDivDetails.className += "dayDivDetails"
         //make it so you can click on a day for more info
-        dayDivDetails.addEventListener("click", console.log("hi"))
-        // createHourDivs(weatherData, parseApiInfo(weatherData).datesOriginal[i])
+        dayDivDetails.addEventListener("click", function(){
+          createHourDivs(weatherData, parseApiInfo(weatherData).datesOriginal[i])
+        })
         //high and low temps
         let fTempMin = Math.round(1.8*(tempMinMax(weatherData).minTemps[i]-273) + 32)
         let fTempMax = Math.round(1.8*(tempMinMax(weatherData).maxTemps[i]-273) + 32)

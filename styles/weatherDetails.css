@@ -6,15 +6,16 @@
   border-radius: 3px;
 }
 #currentDayHourly{
-  height: 100%;
+  height: 90%;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   overflow: scroll;
+  overflow-x: hidden;
 }
 .hourDiv{
   height: 150px;
-  min-width: 90vw;
+  min-width: 40vw;
   border-radius: 3px;
   box-shadow: 2px 2px 1px grey;
   width: 100px;

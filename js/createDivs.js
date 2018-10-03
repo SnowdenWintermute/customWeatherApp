@@ -49,6 +49,17 @@ function createHourDivs(weatherData, date){
 
   let reports = weatherData.list
   let divCounter = 0
+
+  //remove hour divs from any previously called day
+  let hasChildren = true
+  while(hasChildren){
+    if(currentDayHourly.firstChild){
+      currentDayHourly.removeChild(currentDayHourly.firstChild)
+    }else{
+      hasChildren = false
+    }
+  }
+  //create hourly info divs
   for(report of reports){
     if(date === report.dt_txt.slice(0,10)){
       let hourDiv = document.createElement('div')
