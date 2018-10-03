@@ -35,7 +35,7 @@ function getWeather(city,country){
         document.getElementById(`dayDivImg${i+1}`).src = `http://openweathermap.org/img/w/${parseApiInfo(weatherData).icons[i]}.png`
         let dayDivDetails = document.getElementById(`dayDivDetails${i+1}`)
         dayDivDetails.innerHTML = "See Hourly"
-        dayDivDetails.className += "dayDivDetails"
+        dayDivDetails.className = "dayDivDetails"
         //make it so you can click on a day for more info
         dayDivDetails.addEventListener("click", function(){
           createHourDivs(weatherData, parseApiInfo(weatherData).datesOriginal[i])

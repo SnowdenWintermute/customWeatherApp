@@ -17,7 +17,8 @@
 .dayDivDetails{
   width:100%;
   height: 20%;
-  background: white;
+  color:white;
+  background: #D69C84;
   cursor: pointer;
 }
 .dayDiv{

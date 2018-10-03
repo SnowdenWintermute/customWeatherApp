@@ -46,9 +46,11 @@ let createfiveDayDivs = function(){
 function createHourDivs(weatherData, date){
   let currentDayHourly = document.getElementById('currentDayHourly')
   let myDF = document.createDocumentFragment()
-
   let reports = weatherData.list
   let divCounter = 0
+
+  //set title of hourly weather section
+  document.getElementById('weatherDetailsTitle').innerHTML = date
 
   //remove hour divs from any previously called day
   let hasChildren = true
@@ -61,11 +63,24 @@ function createHourDivs(weatherData, date){
   }
   //create hourly info divs
   for(report of reports){
+    console.log(report.dt_txt.slice(0,10));
     if(date === report.dt_txt.slice(0,10)){
       let hourDiv = document.createElement('div')
       hourDiv.className = 'hourDiv'
-      hourDiv.id = `hourDiv${divCounter}`
-      hourDiv.innerHTML = date
+      hourDiv.id = `hourDiv${divCounter+1}`
+
+      let hourDivDate = document.createElement('div')
+      hourDivDate.className = 'hourDivDate'
+      hourDivDate.id = `hourDivDate${divCounter+1}`
+      hourDivDate.innerHTML = timeConverter(report.dt).full
+      hourDiv.appendChild(hourDivDate)
+
+      let hourDivTemp = document.createElement('div')
+      hourDivTemp.className = 'hourDivTemp'
+      hourDivTemp.id = `hourDivTemp${divCounter+1}`
+      hourDivTemp.innerHTML = report.main.temp
+      hourDiv.appendChild(hourDivTemp)
+
       divCounter ++
 
       myDF.appendChild(hourDiv)
