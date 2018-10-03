@@ -10,11 +10,25 @@ function timeConverter(UNIX_timestamp){
   var min = a.getMinutes() < 10 ? '0' + a.getMinutes() : a.getMinutes()
   var sec = a.getSeconds() < 10 ? '0' + a.getSeconds() : a.getSeconds()
   var timeString = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec
+  var hour12 = function(){
+    let result = 0
+    let am = "AM"
+    if(hour>12) {
+      result = hour-12
+      am = "PM"
+    }else{
+      result = hour
+    }
+    result = result.toString() + ":00 " + am
+
+    return result
+  }
   var timeObject = {
     "date": date,
     "month": month,
     "year": year,
     "hour": hour,
+    "hour12": hour12,
     "min": min,
     "sec": sec,
     "full": timeString

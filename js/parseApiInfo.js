@@ -30,7 +30,6 @@ function parseApiInfo(weatherData){
     //Get icon and description at 1400 hours utc (or whatever is available for the first day)
     if(reportHour === 14 || icons.length === 0){
       icons.push(report.weather[0].icon)
-      console.log(report.weather[0].icon);
       descriptions.push(report.weather[0].description)
     }
 

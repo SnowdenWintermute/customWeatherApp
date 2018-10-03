@@ -63,8 +63,7 @@ function createHourDivs(weatherData, date){
   }
   //create hourly info divs
   for(report of reports){
-    console.log(report.dt_txt.slice(0,10));
-    if(date === report.dt_txt.slice(0,10)){
+    if(date === timeConverter(report.dt).full.slice(0,10)){
       let hourDiv = document.createElement('div')
       hourDiv.className = 'hourDiv'
       hourDiv.id = `hourDiv${divCounter+1}`
@@ -72,14 +71,44 @@ function createHourDivs(weatherData, date){
       let hourDivDate = document.createElement('div')
       hourDivDate.className = 'hourDivDate'
       hourDivDate.id = `hourDivDate${divCounter+1}`
-      hourDivDate.innerHTML = timeConverter(report.dt).full
+      hourDivDate.innerHTML = timeConverter(report.dt).hour12()
       hourDiv.appendChild(hourDivDate)
+
+      let hourDivIcon = document.createElement('img')
+      hourDivIcon.className = 'hourDivIcon'
+      hourDivIcon.id = `hourDivIcon${divCounter+1}`
+      hourDivIcon.src = `http://openweathermap.org/img/w/${report.weather[0].icon}.png`
+      hourDiv.appendChild(hourDivIcon)
+
+      let hourDivDesc = document.createElement('div')
+      hourDivDesc.className = 'hourDivDesc'
+      hourDivDesc.id = `hourDivDesc${divCounter+1}`
+      hourDivDesc.innerHTML = report.weather[0].description
+      hourDiv.appendChild(hourDivDesc)
 
       let hourDivTemp = document.createElement('div')
       hourDivTemp.className = 'hourDivTemp'
       hourDivTemp.id = `hourDivTemp${divCounter+1}`
-      hourDivTemp.innerHTML = report.main.temp
+      hourDivTemp.innerHTML = `Temperature: ${Math.round(1.8*(report.main.temp-273) + 32)}°F / ${Math.round(report.main.temp-273)}°C`
       hourDiv.appendChild(hourDivTemp)
+
+      let hourDivHumidity = document.createElement('div')
+      hourDivHumidity.className = 'hourDivHumidity'
+      hourDivHumidity.id = `hourDivHumidity${divCounter+1}`
+      hourDivHumidity.innerHTML = `Humidity: ${Math.round(report.main.humidity)}%`
+      hourDiv.appendChild(hourDivHumidity)
+
+      let hourDivWind = document.createElement('div')
+      hourDivWind.className = 'hourDivWind'
+      hourDivWind.id = `hourDivWind${divCounter+1}`
+      hourDivWind.innerHTML = `Wind Speed: ${report.wind.speed} m/s at ${Math.round(report.wind.deg)}°`
+      hourDiv.appendChild(hourDivWind)
+
+      let hourDivPressure = document.createElement('div')
+      hourDivPressure.className = 'hourDivPressure'
+      hourDivPressure.id = `hourDivPressure${divCounter+1}`
+      hourDivPressure.innerHTML = `Air Pressure: ${Math.round(report.main.pressure)} hPa`
+      hourDiv.appendChild(hourDivPressure)
 
       divCounter ++
 
