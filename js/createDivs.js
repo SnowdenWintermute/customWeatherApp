@@ -17,15 +17,21 @@ let createfiveDayDivs = function(){
     dayDivDate.id = `dayDivDate${i+1}`
     dayDiv.appendChild(dayDivDate)
 
+    let dayDivImg = document.createElement('img')
+    dayDivImg.className = "dayDivImg"
+    dayDivImg.id = `dayDivImg${i+1}`
+    dayDivImg.src = `http://openweathermap.org/img/w/10d.png`
+    dayDiv.appendChild(dayDivImg)
+
     let dayDivTemp = document.createElement('div')
     dayDivTemp.className = "dayDivTemp"
     dayDivTemp.id = `dayDivTemp${i+1}`
     dayDiv.appendChild(dayDivTemp)
 
-    let dayDivImg = document.createElement('img')
-    dayDivImg.className = "dayDivImg"
-    dayDivImg.src = `http://openweathermap.org/img/w/10d.png`
-    dayDiv.appendChild(dayDivImg)
+    let dayDivDesc = document.createElement('div')
+    dayDivDesc.className = "dayDivDesc"
+    dayDivDesc.id = `dayDivDesc${i+1}`
+    dayDiv.appendChild(dayDivDesc)
 
     myDF.appendChild(dayDiv)
   }

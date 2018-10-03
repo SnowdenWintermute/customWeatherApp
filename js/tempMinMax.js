@@ -1,9 +1,10 @@
+// copied these from stack overflow. It uses prototypical inheritance to make a function that returns the max or min value in an array.
 Array.max = function( array ){
-  return Math.max.apply( Math, array );
-};
+  return Math.max.apply( Math, array )
+}
 Array.min = function( array ){
-  return Math.min.apply( Math, array );
-};
+  return Math.min.apply( Math, array )
+}
 
 function tempMinMax(weatherData){
 
@@ -11,13 +12,12 @@ function tempMinMax(weatherData){
   let minTemps = []
   let maxTemps = []
   let currentDay = ""
-
   let currentDayTemps = []
 
 //loop through all 3 hour reports in the list
   for(report of days){
     //extract the date from dt_text string
-    let reportDay = report.dt_txt.slice(0,11)
+    let reportDay = report.dt_txt.slice(0,10)
     //if current report is the same day as last report
     if(reportDay === currentDay || currentDay === ""){
       //push current report's temp into array for later comparisons
@@ -32,6 +32,5 @@ function tempMinMax(weatherData){
     //set day to current report's day
     currentDay = reportDay
   }
-
   return({minTemps, maxTemps})
 }

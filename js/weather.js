@@ -26,14 +26,19 @@ function getWeather(city,country){
 
       fiveDayTitle.innerHTML = weatherData.city.name + " " + weatherData.city.country
 
+      //fill the divs with weather info
       for(let i=0; i<5; i++){
-
+        //days and dates
+        document.getElementById(`dayDivDate${i+1}`).innerHTML = weekdaysAndDates(weatherData).dates[i]
+        document.getElementById(`dayDivDay${i+1}`).innerHTML = weekdaysAndDates(weatherData).weekdays[i]
+        document.getElementById(`dayDivDesc${i+1}`).innerHTML = weekdaysAndDates(weatherData).descriptions[i]
+        document.getElementById(`dayDivImg${i+1}`).src = `http://openweathermap.org/img/w/${weekdaysAndDates(weatherData).icons[i]}.png`
+        //high and low temps
         let fTempMin = Math.round(1.8*(tempMinMax(weatherData).minTemps[i]-273) + 32)
         let fTempMax = Math.round(1.8*(tempMinMax(weatherData).maxTemps[i]-273) + 32)
         document.getElementById(`dayDivTemp${i+1}`).innerHTML = `${fTempMax}° F / ${fTempMin}° F`
       }
 
-      console.log(timeConverter(weatherData.list[0].dt));
     } else {
       console.log('error: xhr not 200');
     }
