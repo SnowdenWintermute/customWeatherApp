@@ -1,0 +1,24 @@
+#weatherDetails{
+  height: 60vh;
+  width: 96vw;
+  background: #84A3B2;
+  margin-top: 2vh;
+  border-radius: 3px;
+}
+#currentDayHourly{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: scroll;
+}
+.hourDiv{
+  height: 150px;
+  min-width: 90vw;
+  border-radius: 3px;
+  box-shadow: 2px 2px 1px grey;
+  width: 100px;
+  margin: 10px;
+  min-height: 110px;
+  background: #517082;
+}

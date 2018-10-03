@@ -3,11 +3,11 @@
 let urlRoot = 'http://api.openweathermap.org/data/2.5/weather?q='
 let apiID = '55bd4eb052cb7c72fd8594fbd1ee7fee'
 
-let button = document.getElementById('submit')
+let searchButton = document.getElementById('submit')
 let cityInput = document.getElementById('cityInput')
 let countryInput = document.getElementById('countryInput')
 
-button.addEventListener('click', function(){
+searchButton.addEventListener('click', function(){
   getWeather(cityInput.value, countryInput.value)
 })
 
@@ -29,10 +29,16 @@ function getWeather(city,country){
       //fill the divs with weather info
       for(let i=0; i<5; i++){
         //days and dates
-        document.getElementById(`dayDivDate${i+1}`).innerHTML = weekdaysAndDates(weatherData).dates[i]
-        document.getElementById(`dayDivDay${i+1}`).innerHTML = weekdaysAndDates(weatherData).weekdays[i]
-        document.getElementById(`dayDivDesc${i+1}`).innerHTML = weekdaysAndDates(weatherData).descriptions[i]
-        document.getElementById(`dayDivImg${i+1}`).src = `http://openweathermap.org/img/w/${weekdaysAndDates(weatherData).icons[i]}.png`
+        document.getElementById(`dayDivDate${i+1}`).innerHTML = parseApiInfo(weatherData).dates[i]
+        document.getElementById(`dayDivDay${i+1}`).innerHTML = parseApiInfo(weatherData).weekdays[i]
+        document.getElementById(`dayDivDesc${i+1}`).innerHTML = parseApiInfo(weatherData).descriptions[i]
+        document.getElementById(`dayDivImg${i+1}`).src = `http://openweathermap.org/img/w/${parseApiInfo(weatherData).icons[i]}.png`
+        let dayDivDetails = document.getElementById(`dayDivDetails${i+1}`)
+        dayDivDetails.innerHTML = "See Hourly"
+        dayDivDetails.className += "dayDivDetails"
+        //make it so you can click on a day for more info
+        dayDivDetails.addEventListener('click', console.log("ey"))
+        // createHourDivs(weatherData, parseApiInfo(weatherData).datesOriginal[i])
         //high and low temps
         let fTempMin = Math.round(1.8*(tempMinMax(weatherData).minTemps[i]-273) + 32)
         let fTempMax = Math.round(1.8*(tempMinMax(weatherData).maxTemps[i]-273) + 32)

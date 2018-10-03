@@ -1,8 +1,9 @@
-function weekdaysAndDates(weatherData){
+function parseApiInfo(weatherData){
 
   let reports = weatherData.list
   let weekdays = []
   let dates = []
+  let datesOriginal = []
   let icons = []
   let descriptions = []
   let currentDay = ""
@@ -21,6 +22,7 @@ function weekdaysAndDates(weatherData){
     //if no dates have been added to array yet
     if(dates === [] || currentDay !== reportDate){
       dates.push(reportDateReformat)
+      datesOriginal.push(reportDate)
       weekdays.push(getDayName(reportDateReformat, 'en-US'))
     }
     //Get icon and description at 1800 hours utc (or whatever is available for the first day)
@@ -34,6 +36,7 @@ function weekdaysAndDates(weatherData){
     return({
             "weekdays": weekdays,
             "dates":dates,
+            "datesOriginal": datesOriginal,
             "icons": icons,
             "descriptions": descriptions
           })

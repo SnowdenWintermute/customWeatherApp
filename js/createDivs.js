@@ -4,7 +4,7 @@ let createfiveDayDivs = function(){
 
   for(let i=0; i<5; i++){
     let dayDiv = document.createElement('div')
-    dayDiv.className += "dayDiv"
+    dayDiv.className = "dayDiv"
     dayDiv.id = `dayDiv${i+1}`
 
     let dayDivDay = document.createElement('div')
@@ -20,7 +20,7 @@ let createfiveDayDivs = function(){
     let dayDivImg = document.createElement('img')
     dayDivImg.className = "dayDivImg"
     dayDivImg.id = `dayDivImg${i+1}`
-    dayDivImg.src = `http://openweathermap.org/img/w/10d.png`
+    dayDivImg.src = `...`
     dayDiv.appendChild(dayDivImg)
 
     let dayDivTemp = document.createElement('div')
@@ -33,10 +33,35 @@ let createfiveDayDivs = function(){
     dayDivDesc.id = `dayDivDesc${i+1}`
     dayDiv.appendChild(dayDivDesc)
 
+    let dayDivDetails = document.createElement('div')
+    dayDivDetails.id = `dayDivDetails${i+1}`
+    dayDiv.appendChild(dayDivDetails)
+
     myDF.appendChild(dayDiv)
   }
 
   fiveDaySections.appendChild(myDF)
 }
+
+function createHourDivs(weatherData, date){
+  let currentDayHourly = document.getElementById('currentDayHourly')
+  let myDF = document.createDocumentFragment()
+
+  let reports = weatherData.list
+  let divCounter = 0
+  for(report of reports){
+    if(date === report.dt_txt.slice(0,10)){
+      let hourDiv = document.createElement('div')
+      hourDiv.className = 'hourDiv'
+      hourDiv.id = `hourDiv${divCounter}`
+      hourDiv.innerHTML = date
+      divCounter ++
+
+      myDF.appendChild(hourDiv)
+    }
+  }
+  currentDayHourly.appendChild(myDF)
+}
+
 
 window.onload = createfiveDayDivs
