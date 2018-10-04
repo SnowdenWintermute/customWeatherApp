@@ -29,16 +29,19 @@ function getWeather(city,country){
       //fill the divs with weather info
       for(let i=0; i<5; i++){
         //days and dates
+        document.getElementById(`fiveDay`).className = "fiveDay"
+        document.getElementById(`fiveDayTitle`).className = "fiveDayTitle"
+        document.getElementById(`dayDiv${i+1}`).className = "dayDiv"
         document.getElementById(`dayDivDate${i+1}`).innerHTML = parseApiInfo(weatherData).dates[i]
         document.getElementById(`dayDivDay${i+1}`).innerHTML = parseApiInfo(weatherData).weekdays[i]
-        document.getElementById(`dayDivDesc${i+1}`).innerHTML = parseApiInfo(weatherData).descriptions[i]
+        document.getElementById(`dayDivDesc${i+1}`).innerHTML = capitalizeFirstLetter(parseApiInfo(weatherData).descriptions[i])
         document.getElementById(`dayDivImg${i+1}`).src = `http://openweathermap.org/img/w/${parseApiInfo(weatherData).icons[i]}.png`
         let dayDivDetails = document.getElementById(`dayDivDetails${i+1}`)
         dayDivDetails.innerHTML = "See Hourly"
         dayDivDetails.className = "dayDivDetails"
         //make it so you can click on a day for more info
         dayDivDetails.addEventListener("click", function(){
-          createHourDivs(weatherData, parseApiInfo(weatherData).dates[i])
+          createHourDivs(weatherData, parseApiInfo(weatherData).dates[i], i)
         })
         //high and low temps
         let fTempMin = Math.round(1.8*(tempMinMax(weatherData).minTemps[i]-273) + 32)

@@ -1,25 +1,75 @@
 /* Search Section */
 #search{
   background: #D9D0B1;
-  height:100px;
-  width: 100vw;
+  height:auto;
+  min-height:100px;
+  width: 100%;
   color: #002642;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
+}
+#mainTitle{
+  margin-top: 20px;
+  font-size: 3em;
+  font-weight: bold;
+}
+#formWrapper{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+#searchForm{
+  margin: 0px 10px 0px 10px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+}
+#buttons{
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#getLocation{
+  height: 40px;
+  width: 40px;
+  background: #D69C84;
 }
 #search label{
-  font-size: 1.8em;
+  font-size: 1.6em;
+  margin-right: 5px;
   font-weight: bold;
+  color: #517082;
 }
 #search input{
   margin-right:15px;
+  padding-left: 5px;
+  max-width: 40vw;
   font-size: 1.6em;
   border-radius: 3px;
+  border: none;
+  box-shadow: 2px 2px 2px grey;
+  color: #517082;
+  height:3.3vh;
+  transition: box-shadow .5s;
 }
 #submit{
   height:40px;
   width:150px;
   background: #D69C84;
-  margin-left: 15px;
+  margin-right: 15px;
+  margin-left: 10px;
+  transition: box-shadow .5s;
+}
+#search input:focus,
+#submit:focus,
+#getLocation:focus,
+#search input:hover,
+#submit:hover,
+#getLocation:hover
+.button:hover{
+    box-shadow: 2px 2px 2px white;
 }

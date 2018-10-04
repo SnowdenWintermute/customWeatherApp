@@ -1,25 +1,50 @@
 #weatherDetails{
-  height: 60vh;
-  width: 96vw;
+  height: auto;
+  width: 96%;
   background: #84A3B2;
   margin-top: 2vh;
+  margin-bottom:2vh;
   border-radius: 3px;
 }
 #currentDayHourly{
-  height: 90%;
+  height: auto;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  overflow: scroll;
-  overflow-x: hidden;
+  justify-content: center;
+}
+.weatherDetailsTitle{
+  margin-top: 15px;
+  font-size: 2em;
+  color: black;
+  text-align: center;
+}
+.hourDivInfo{
+  margin-left: 6px;
+}
+.hourDivTime{
+  color: #D9D0B1;
+  font-weight: bold;
+  margin-top: 6px;
+  text-align: center;
 }
 .hourDiv{
-  height: 150px;
-  min-width: 40vw;
+  height: auto;
+  min-height: 150px;
+  min-width: 200px;
   border-radius: 3px;
-  box-shadow: 2px 2px 1px grey;
-  width: 100px;
+  box-shadow: 0px 2px 1px grey;
+  width: 20%;
   margin: 10px;
   min-height: 110px;
   background: #517082;
+  font-size: 1.4em;
+}
+.hourImgHolder{
+  width:100%;
+  display: flex;
+  justify-content: center;
+}
+.hourDivPressure{
+  margin-bottom: 6px;
 }

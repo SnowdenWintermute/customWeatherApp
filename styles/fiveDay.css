@@ -1,11 +1,12 @@
-#fiveDay{
+.fiveDay{
   min-height: 150px;
-  width:96vw;
+  width:96%;
   background: #84A3B2;
   border-radius: 3px;
   margin-top: 2vh;
   display:flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 #fiveDaySections{
@@ -14,20 +15,51 @@
   justify-content: center;
   flex-wrap: wrap;
 }
-.dayDivDetails{
-  width:100%;
-  height: 20%;
-  color:white;
-  background: #D69C84;
-  cursor: pointer;
+.fiveDayTitle{
+  margin-top: 15px;
+  font-size: 2em;
+  color: #000;
 }
 .dayDiv{
   height: 150px;
   min-width: 140px;
   border-radius: 3px;
-  box-shadow: 2px 2px 1px grey;
-  width: 100px;;
+  box-shadow: 0px 2px 1px grey;
+  width: 100px;
   margin: 10px;
   min-height: 110px;
   background: #517082;
+}
+.dayDivDetails{
+  width:100%;
+  height: 20%;
+  color:white;
+  background: #D69C84;
+  font-size: 1.4em;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dayDivDetails:hover{
+  box-shadow: 0px 1px 1px white;
+}
+.dayDivInfoText{
+  font-size: 1.2em;
+  margin-left: 4px
+}
+.dayDivDay{
+  width:100%;
+  font-size: 1.6em;
+  font-weight: bold;
+  color: #D9D0B1;
+  text-align: center;
+}
+.dayDivImgHolder{
+  width:100%;
+  display: flex;
+  justify-content: center;
+}
+.dayDivDesc{
+  margin-bottom: 4px;
 }
