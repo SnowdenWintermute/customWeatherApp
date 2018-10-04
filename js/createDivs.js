@@ -24,6 +24,7 @@ let createfiveDayDivs = function(){
     dayDivImg.className = "dayDivImg dayDivInfoText"
     dayDivImg.id = `dayDivImg${i+1}`
     dayDivImg.src = `...`
+    dayDivImg.alt = ''
     dayDivImgHolder.appendChild(dayDivImg)
 
     let dayDivTemp = document.createElement('div')

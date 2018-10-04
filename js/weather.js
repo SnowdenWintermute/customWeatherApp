@@ -1,6 +1,6 @@
-// 'http://api.openweathermap.org/data/2.5/forecast?q=London,uk&APPID=55bd4eb052cb7c72fd8594fbd1ee7fee'
+// 'https://api.openweathermap.org/data/2.5/forecast?q=London,uk&APPID=55bd4eb052cb7c72fd8594fbd1ee7fee'
 
-let urlRoot = 'http://api.openweathermap.org/data/2.5/weather?q='
+let urlRoot = 'https://api.openweathermap.org/data/2.5/weather?q='
 let apiID = '55bd4eb052cb7c72fd8594fbd1ee7fee'
 
 let searchButton = document.getElementById('submit')
@@ -18,14 +18,14 @@ searchByLocationButton.addEventListener('click', function(){
 
 function getWeather(city, country, lat, long){
 
-  let fullUrl = `http://api.openweathermap.org/data/2.5/forecast?q=${city},${country}&APPID=${apiID}`
-  if(!country) fullUrl = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&APPID=${apiID}`
+  let fullUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city},${country}&APPID=${apiID}`
+  if(!country) fullUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&APPID=${apiID}`
   if(!city && !lat) {
     fiveDayTitle.innerHTML = 'Please enter a city or use location button.'
     removeAllChildElements(document.getElementById('fiveDaySections'))
   }
 
-  if(lat && long) fullUrl =  `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&APPID=55bd4eb052cb7c72fd8594fbd1ee7fee`
+  if(lat && long) fullUrl =  `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&APPID=55bd4eb052cb7c72fd8594fbd1ee7fee`
 
   let xhr = new XMLHttpRequest()
   xhr.open('GET', fullUrl, true)
@@ -48,7 +48,7 @@ function getWeather(city, country, lat, long){
         document.getElementById(`dayDivDate${i+1}`).innerHTML = parseApiInfo(weatherData).dates[i]
         document.getElementById(`dayDivDay${i+1}`).innerHTML = parseApiInfo(weatherData).weekdays[i]
         document.getElementById(`dayDivDesc${i+1}`).innerHTML = capitalizeFirstLetter(parseApiInfo(weatherData).descriptions[i])
-        document.getElementById(`dayDivImg${i+1}`).src = `http://openweathermap.org/img/w/${parseApiInfo(weatherData).icons[i]}.png`
+        document.getElementById(`dayDivImg${i+1}`).src = `https://openweathermap.org/img/w/${parseApiInfo(weatherData).icons[i]}.png`
 
         //remove any hourly info from previous searches
         removeAllChildElements(currentDayHourly)
