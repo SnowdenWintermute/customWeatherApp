@@ -81,7 +81,7 @@ function createHourDivs(weatherData, date, index){
       let hourDivIcon = document.createElement('img')
       hourDivIcon.className = 'hourDivIcon'
       hourDivIcon.id = `hourDivIcon${divCounter+1}`
-      hourDivIcon.src = `http://openweathermap.org/img/w/${report.weather[0].icon}.png`
+      hourDivIcon.src = `https://openweathermap.org/img/w/${report.weather[0].icon}.png`
       hourImgHolder.appendChild(hourDivIcon)
 
       let hourDivDesc = document.createElement('div')
