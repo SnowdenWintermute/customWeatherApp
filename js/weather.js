@@ -4,6 +4,7 @@ let urlRoot = 'http://api.openweathermap.org/data/2.5/weather?q='
 let apiID = '55bd4eb052cb7c72fd8594fbd1ee7fee'
 
 let searchButton = document.getElementById('submit')
+let searchByLocationButton = document.getElementById('getLocation')
 let cityInput = document.getElementById('cityInput')
 let countryInput = document.getElementById('countryInput')
 
@@ -11,11 +12,20 @@ searchButton.addEventListener('click', function(){
   getWeather(cityInput.value, countryInput.value)
 })
 
-function getWeather(city,country){
+searchByLocationButton.addEventListener('click', function(){
+  getLocation()
+})
+
+function getWeather(city, country, lat, long){
 
   let fullUrl = `http://api.openweathermap.org/data/2.5/forecast?q=${city},${country}&APPID=${apiID}`
   if(!country) fullUrl = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&APPID=${apiID}`
-  if(!city) fiveDayTitle.innerHTML = 'Please enter a city'
+  if(!city && !lat) {
+    fiveDayTitle.innerHTML = 'Please enter a city or use location button.'
+    removeAllChildElements(document.getElementById('fiveDaySections'))
+  }
+
+  if(lat && long) fullUrl =  `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&APPID=55bd4eb052cb7c72fd8594fbd1ee7fee`
 
   let xhr = new XMLHttpRequest()
   xhr.open('GET', fullUrl, true)
@@ -25,6 +35,9 @@ function getWeather(city,country){
       console.log(weatherData);
 
       fiveDayTitle.innerHTML = weatherData.city.name + " " + weatherData.city.country
+
+      //create the 5 day Divs
+      createfiveDayDivs()
 
       //fill the divs with weather info
       for(let i=0; i<5; i++){
@@ -36,6 +49,12 @@ function getWeather(city,country){
         document.getElementById(`dayDivDay${i+1}`).innerHTML = parseApiInfo(weatherData).weekdays[i]
         document.getElementById(`dayDivDesc${i+1}`).innerHTML = capitalizeFirstLetter(parseApiInfo(weatherData).descriptions[i])
         document.getElementById(`dayDivImg${i+1}`).src = `http://openweathermap.org/img/w/${parseApiInfo(weatherData).icons[i]}.png`
+
+        //remove any hourly info from previous searches
+        removeAllChildElements(currentDayHourly)
+        document.getElementById('weatherDetailsTitle').className = ""
+        document.getElementById('weatherDetailsTitle').innerHTML = null
+
         let dayDivDetails = document.getElementById(`dayDivDetails${i+1}`)
         dayDivDetails.innerHTML = "See Hourly"
         dayDivDetails.className = "dayDivDetails"

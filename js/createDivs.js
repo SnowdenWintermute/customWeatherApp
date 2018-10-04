@@ -54,15 +54,10 @@ function createHourDivs(weatherData, date, index){
 
   //set title of hourly weather section
   document.getElementById('weatherDetailsTitle').innerHTML = parseApiInfo(weatherData).weekdays[index] + " " + date
+
   //remove hour divs from any previously called day
-  let hasChildren = true
-  while(hasChildren){
-    if(currentDayHourly.firstChild){
-      currentDayHourly.removeChild(currentDayHourly.firstChild)
-    }else{
-      hasChildren = false
-    }
-  }
+  removeAllChildElements(currentDayHourly)
+
   //create hourly info divs
   for(report of reports){
     if(date === timeConverter(report.dt).full.slice(0,10)){
