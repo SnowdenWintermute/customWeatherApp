@@ -8,16 +8,16 @@ Array.min = function( array ){
 
 function tempMinMax(weatherData){
 
-  let days = weatherData.list
+  let reports = weatherData.list
   let minTemps = []
   let maxTemps = []
-  let currentDay = ""
+  let currentDay = timeConverter(weatherData.list[0].dt).date
   let currentDayTemps = []
 
-//loop through all 3 hour reports in the list
-  for(report of days){
+//loop through all 3hour reports in the list
+  for(report of reports){
     //extract the date from dt_text string
-    let reportDay = report.dt_txt.slice(0,10)
+    let reportDay = timeConverter(report.dt).date
     //if current report is the same day as last report
     if(reportDay === currentDay || currentDay === ""){
       //push current report's temp into array for later comparisons
