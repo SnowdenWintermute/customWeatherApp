@@ -31,6 +31,7 @@
   background: #D69C84;
   border: none;
   font-size: 1.4em;
+  font-weight: bold;
   cursor: pointer;
 }
 .dayDivDetails:hover{

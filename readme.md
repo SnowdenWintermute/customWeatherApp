@@ -1,4 +1,6 @@
-﻿Welcome to "Weather of the Future", an openweathermap api app.
+﻿## Weather of the Future
+
+### Welcome to "Weather of the Future", an openweathermap api app.
 
 TECHNOLOGIES USED:
 - HTML
@@ -17,8 +19,9 @@ I have tested this app on the following browsers:
 - Mobile Firefox
 - Google Chrome 69.0.3 or newer
 - Mobile Chrome
-- Samsung Internet 7.4.00.70 or newer
+- Safari 12
 - Mobile Safari
+- Samsung Internet 7.4.00.70 or newer
 
 THOUGHT PROCESS:
 The first thing I had to do was get the data from the API, so I had to learn how to

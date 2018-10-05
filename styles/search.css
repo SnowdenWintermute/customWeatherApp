@@ -7,11 +7,13 @@
   color: #002642;
   flex-direction: column;
   flex-wrap: wrap;
+  text-align: center;
 }
 #mainTitle{
   margin-top: 20px;
   font-size: 3em;
   font-weight: bold;
+  font-family: 'Fredoka One', cursive;
 }
 #formWrapper{
   display: flex;
