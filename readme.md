@@ -1,6 +1,6 @@
 ﻿## Weather of the Future
 
-### Welcome to "Weather of the Future", an openweathermap api app.
+### Welcome to "Weather of the Future", an openweathermap API app.
 
 TECHNOLOGIES USED:
 - HTML
