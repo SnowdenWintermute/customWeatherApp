@@ -1,9 +1,9 @@
 ﻿Welcome to "Weather of the Future", an openweathermap api app.
 
 TECHNOLOGIES USED:
-• HTML
-• CSS
-• JavaScript ES6
+- HTML
+- CSS
+- JavaScript ES6
 
 HOW TO BUILD AND RUN:
 Because this project uses basic technologies it
@@ -13,12 +13,12 @@ secure (https) version of the page when viewing on an external host.
 
 COMPATIBILITY:
 I have tested this app on the following browsers:
-• Firefox 62.0.3 or newer
-• Mobile Firefox
-• Google Chrome 69.0.3 or newer
-• Mobile Chrome
-• Samsung Internet 7.4.00.70 or newer
-• Mobile Safari
+- Firefox 62.0.3 or newer
+- Mobile Firefox
+- Google Chrome 69.0.3 or newer
+- Mobile Chrome
+- Samsung Internet 7.4.00.70 or newer
+- Mobile Safari
 
 THOUGHT PROCESS:
 The first thing I had to do was get the data from the API, so I had to learn how to
@@ -75,17 +75,17 @@ say I was pretty much done. From there, I spent some time cleaning up the CSS an
 JavaScript, adding comments and removing or rearranging things.
 
 TRADEOFFS:
-• Animations vs efficiency
+- Animations vs efficiency
   - I am a big fan of speed. I usually turn off animations in
    any application that gives me the option to do so. There is a minor
    fade in/out animation when focusing the search fields and buttons.
-• Location Icon
+- Location Icon
   - I wanted to use the font-awesome icon that looks like a
   target on google maps, but it was for paid users only.
 
 WHAT I MIGHT ADD:
-• Loading gifs for if the API calls take a while
-• The ability to search by state/province
-• Wind direction icons
-• Color themes based on current weather
-• Use a different API that has all hours, not just every three
+- Loading gifs for if the API calls take a while
+- The ability to search by state/province
+- Wind direction icons
+- Color themes based on current weather
+- Use a different API that has all hours, not just every three
