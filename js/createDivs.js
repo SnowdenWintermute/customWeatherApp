@@ -23,7 +23,7 @@ let createfiveDayDivs = function(){
     let dayDivImg = document.createElement('img')
     dayDivImg.className = "dayDivImg dayDivInfoText"
     dayDivImg.id = `dayDivImg${i+1}`
-    dayDivImg.src = `...`
+    dayDivImg.src = `../img/loading.gif`
     dayDivImg.alt = ''
     dayDivImgHolder.appendChild(dayDivImg)
 
@@ -121,6 +121,3 @@ function createHourDivs(weatherData, date, index){
   }
   currentDayHourly.appendChild(myDF)
 }
-
-
-window.onload = createfiveDayDivs

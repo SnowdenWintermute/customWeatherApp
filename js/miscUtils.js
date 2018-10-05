@@ -16,11 +16,6 @@ function getLocation(){
 		}
 }
 
-// Get city name from Ip
-function getCityNameFromIp(){
-  let apiURL = `http://api.ipstack.com/${ip}?access_key=40b20ec93314f08b9fc7e46e6431918f`
-}
-
 //remove child elements
 function removeAllChildElements(parent){
   let hasChildren = true
