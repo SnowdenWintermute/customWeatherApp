@@ -23,8 +23,7 @@ function getWeather(city, country, lat, long){
   removeAllChildElements(currentDayHourly)
   document.getElementById('weatherDetailsTitle').className = ""
   document.getElementById('weatherDetailsTitle').innerHTML = null
-  //create the 5 day Divs
-  createfiveDayDivs()
+  //Set up the tite/error div
   document.getElementById(`fiveDay`).className = "fiveDay flex-center"
   document.getElementById(`fiveDayTitle`).className = "fiveDayTitle"
   //set up url templates based on entered data or location
@@ -39,6 +38,8 @@ function getWeather(city, country, lat, long){
   xhr.onload = function(){
     if(this.status === 200){
       let weatherData = JSON.parse(this.responseText)
+      //create the 5 day Divs
+      createfiveDayDivs()
       //display city name
       fiveDayTitle.innerHTML = weatherData.city.name + " " + weatherData.city.country
       //fill the divs with weather info, remove any old search results
