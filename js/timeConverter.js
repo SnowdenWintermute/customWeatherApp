@@ -1,16 +1,16 @@
-//copied from stackoverflow, converts unix timestamp to readable format
+//copied and modified from stackoverflow, converts unix timestamp to readable format in local timezone
 function timeConverter(UNIX_timestamp){
-  //let offset = (new Date()).getTimezoneOffset()/60
-  var a = new Date(UNIX_timestamp * 1000)
-  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
-  var year = a.getFullYear()
-  var month = months[a.getMonth()]
-  var date = a.getDate()
-  var hour = a.getHours()
-  var min = a.getMinutes() < 10 ? '0' + a.getMinutes() : a.getMinutes()
-  var sec = a.getSeconds() < 10 ? '0' + a.getSeconds() : a.getSeconds()
-  var timeString = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec
-  var hour12 = function(){
+  let a = new Date(UNIX_timestamp * 1000)
+  let months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+  let year = a.getFullYear()
+  let month = months[a.getMonth()]
+  let date = a.getDate()
+  let hour = a.getHours()
+  let min = a.getMinutes() < 10 ? '0' + a.getMinutes() : a.getMinutes()
+  let sec = a.getSeconds() < 10 ? '0' + a.getSeconds() : a.getSeconds()
+  let timeString = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec
+  //puts hour in 00:00 AM/PM format
+  let hour12 = function(){
     let result = 0
     let am = "AM"
     if(hour>12) {
@@ -20,10 +20,9 @@ function timeConverter(UNIX_timestamp){
       result = hour
     }
     result = result.toString() + ":00 " + am
-
     return result
   }
-  var timeObject = {
+  let timeObject = {
     "date": date,
     "month": month,
     "year": year,

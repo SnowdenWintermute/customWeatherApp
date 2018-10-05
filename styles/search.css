@@ -5,10 +5,7 @@
   min-height:100px;
   width: 100%;
   color: #002642;
-  display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   flex-wrap: wrap;
 }
 #mainTitle{
@@ -29,11 +26,8 @@
 }
 #buttons{
   height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
-#getLocation{
+#getLocationButton{
   height: 40px;
   width: 40px;
   background: #D69C84;
@@ -56,7 +50,7 @@
   height:30px;
   transition: box-shadow .5s;
 }
-#submit{
+#getWeatherButton{
   height:40px;
   width:150px;
   background: #D69C84;
@@ -65,11 +59,11 @@
   transition: box-shadow .5s;
 }
 #search input:focus,
-#submit:focus,
-#getLocation:focus,
+#getWeatherButton:focus,
+#getLocationButton:focus,
 #search input:hover,
-#submit:hover,
-#getLocation:hover
+#getWeatherButton:hover,
+#getLocationButton:hover
 .button:hover{
     box-shadow: 2px 2px 2px white;
 }

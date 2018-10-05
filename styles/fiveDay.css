@@ -4,15 +4,9 @@
   background: #84A3B2;
   border-radius: 3px;
   margin-top: 2vh;
-  display:flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 #fiveDaySections{
-  display: flex;
-  align-items: center;
-  justify-content: center;
   flex-wrap: wrap;
 }
 .fiveDayTitle{
@@ -35,11 +29,9 @@
   height: 20%;
   color:white;
   background: #D69C84;
+  border: none;
   font-size: 1.4em;
   cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 .dayDivDetails:hover{
   box-shadow: 0px 1px 1px white;

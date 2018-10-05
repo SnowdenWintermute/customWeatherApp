@@ -3,7 +3,7 @@ function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1)
 }
 
-// Get browser location
+//get browser location
 function getLocation(){
   navigator.geolocation.getCurrentPosition(success, error)
 		function success(pos){
@@ -11,9 +11,7 @@ function getLocation(){
 			let long = pos.coords.longitude
       getWeather("", "", lat, long)
 		}
-		function error(){
-			console.log('error')
-		}
+		function error(){ console.log('error: unable to get location') }
 }
 
 //remove child elements

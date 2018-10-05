@@ -1,9 +1,11 @@
+//creates five day forecast overview divs
 let createfiveDayDivs = function(){
   let fiveDaySections = document.getElementById('fiveDaySections')
   let myDF = document.createDocumentFragment()
 
   for(let i=0; i<5; i++){
     let dayDiv = document.createElement('div')
+    dayDiv.className = "dayDiv"
     dayDiv.id = `dayDiv${i+1}`
 
     let dayDivDay = document.createElement('div')
@@ -37,16 +39,16 @@ let createfiveDayDivs = function(){
     dayDivDesc.id = `dayDivDesc${i+1}`
     dayDiv.appendChild(dayDivDesc)
 
-    let dayDivDetails = document.createElement('div')
+    let dayDivDetails = document.createElement('button')
     dayDivDetails.id = `dayDivDetails${i+1}`
     dayDiv.appendChild(dayDivDetails)
 
     myDF.appendChild(dayDiv)
   }
-
   fiveDaySections.appendChild(myDF)
 }
 
+//create hourly weather info divs
 function createHourDivs(weatherData, date, index){
   let currentDayHourly = document.getElementById('currentDayHourly')
   let myDF = document.createDocumentFragment()
@@ -61,6 +63,7 @@ function createHourDivs(weatherData, date, index){
 
   //create hourly info divs
   for(report of reports){
+    //cycling through all weather reports, return an hour div if the date of the report matches the date passed (corresponding to the day div that was clicked)
     if(date === timeConverter(report.dt).full.slice(0,10)){
       let hourDiv = document.createElement('div')
       hourDiv.className = 'hourDiv'
