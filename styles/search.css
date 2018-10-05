@@ -63,7 +63,7 @@
 #getLocationButton:focus,
 #search input:hover,
 #getWeatherButton:hover,
-#getLocationButton:hover
+#getLocationButton:hover,
 .button:hover{
-    box-shadow: 2px 2px 2px white;
+    box-shadow: 0px 2px 2px white;
 }
