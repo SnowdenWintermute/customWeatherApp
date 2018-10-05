@@ -39,9 +39,13 @@ let createfiveDayDivs = function(){
     dayDivDesc.id = `dayDivDesc${i+1}`
     dayDiv.appendChild(dayDivDesc)
 
+    let dayDivDetailsLink = document.createElement('a')
+    dayDivDetailsLink.href="#weatherDetails"
+    dayDiv.appendChild(dayDivDetailsLink)
+
     let dayDivDetails = document.createElement('button')
     dayDivDetails.id = `dayDivDetails${i+1}`
-    dayDiv.appendChild(dayDivDetails)
+    dayDivDetailsLink.appendChild(dayDivDetails)
 
     myDF.appendChild(dayDiv)
   }
