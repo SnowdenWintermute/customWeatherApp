@@ -9,6 +9,8 @@ function timeConverter(UNIX_timestamp){
   let min = a.getMinutes() < 10 ? '0' + a.getMinutes() : a.getMinutes()
   let sec = a.getSeconds() < 10 ? '0' + a.getSeconds() : a.getSeconds()
   let timeString = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec
+
+  let weekday = a.toLocaleDateString('en-US', { weekday: 'long' })
   //puts hour in 00:00 AM/PM format
   let hour12 = function(){
     let result = 0
@@ -30,7 +32,8 @@ function timeConverter(UNIX_timestamp){
     "hour12": hour12,
     "min": min,
     "sec": sec,
-    "full": timeString
+    "full": timeString,
+    "weekday": weekday
   }
   return timeObject
 }
