@@ -2,7 +2,7 @@ function parseApiInfo(weatherData){
   let reports = weatherData.list
   let weekdays = []
   let dates = []
-  let datesOriginal = []
+  let formattedDates = []
   let icons = []
   let descriptions = []
   let currentDay = ""
@@ -14,12 +14,14 @@ function parseApiInfo(weatherData){
     let reportHour = timeConverter(report.dt).hour
     let reportDateYear = timeConverter(report.dt).year
     let reportDateMonth = timeConverter(report.dt).month
+    let reportDateMonthNumber = timeConverter(report.dt).monthNumber
     let reportDateDay = timeConverter(report.dt).weekday
     let reportDateFull = timeConverter(report.dt).full
-    let reportDateReformat = `${reportDateMonth}/${reportDateDay}/${reportDateYear}`
+    let reportDateReformat = `${reportDateMonthNumber}/${reportDate}/${reportDateYear}`
     //push dates and weekdays to respective arrays
     if(dates === [] || currentDay !== reportDate){
-      dates.push(reportDateFull.slice(0,10))
+      formattedDates.push(reportDateReformat)
+      dates.push(reportDate)
       weekdays.push(reportDateDay)
     }
     //Get icon and description at 1400 hours utc (or whatever is available for the first day)
@@ -33,7 +35,7 @@ function parseApiInfo(weatherData){
     return({
             "weekdays": weekdays,
             "dates":dates,
-            "datesOriginal": datesOriginal,
+            "formattedDates": formattedDates,
             "icons": icons,
             "descriptions": descriptions
           })

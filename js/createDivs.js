@@ -53,14 +53,14 @@ let createfiveDayDivs = function(){
 }
 
 //create hourly weather info divs
-function createHourDivs(weatherData, date, index){
+function createHourDivs(weatherData, date, formattedDate, index){
   let currentDayHourly = document.getElementById('currentDayHourly')
   let myDF = document.createDocumentFragment()
   let reports = weatherData.list
   let divCounter = 0
 
   //set title of hourly weather section
-  document.getElementById('weatherDetailsTitle').innerHTML = parseApiInfo(weatherData).weekdays[index] + " " + date
+  document.getElementById('weatherDetailsTitle').innerHTML = parseApiInfo(weatherData).weekdays[index] + " " + formattedDate
 
   //remove hour divs from any previously called day
   removeAllChildElements(currentDayHourly)
@@ -68,7 +68,7 @@ function createHourDivs(weatherData, date, index){
   //create hourly info divs
   for(report of reports){
     //cycling through all weather reports, return an hour div if the date of the report matches the date passed (corresponding to the day div that was clicked)
-    if(date === timeConverter(report.dt).full.slice(0,10)){
+    if(date === timeConverter(report.dt).date){
       let hourDiv = document.createElement('div')
       hourDiv.className = 'hourDiv'
       hourDiv.id = `hourDiv${divCounter+1}`

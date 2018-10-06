@@ -45,7 +45,7 @@ function getWeather(city, country, lat, long){
       //fill the divs with weather info, remove any old search results
       for(let i=0; i<5; i++){
         //put info in the five day divs
-        document.getElementById(`dayDivDate${i+1}`).innerHTML = parseApiInfo(weatherData).dates[i]
+        document.getElementById(`dayDivDate${i+1}`).innerHTML = parseApiInfo(weatherData).formattedDates[i]
         document.getElementById(`dayDivDay${i+1}`).innerHTML = parseApiInfo(weatherData).weekdays[i]
         document.getElementById(`dayDivDesc${i+1}`).innerHTML = capitalizeFirstLetter(parseApiInfo(weatherData).descriptions[i])
         document.getElementById(`dayDivImg${i+1}`).src = `https://openweathermap.org/img/w/${parseApiInfo(weatherData).icons[i]}.png`
@@ -57,7 +57,7 @@ function getWeather(city, country, lat, long){
         let dayDivDetails = document.getElementById(`dayDivDetails${i+1}`)
         dayDivDetails.innerHTML = "See Hourly"
         dayDivDetails.className = "dayDivDetails flex-center"
-        dayDivDetails.addEventListener("click", function(){ createHourDivs(weatherData, parseApiInfo(weatherData).dates[i], i) })
+        dayDivDetails.addEventListener("click", function(){ createHourDivs(weatherData, parseApiInfo(weatherData).dates[i], parseApiInfo(weatherData).formattedDates[i], i) })
       }
     } else {
       //Display error if invalid data entered

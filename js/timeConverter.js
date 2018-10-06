@@ -4,6 +4,7 @@ function timeConverter(UNIX_timestamp){
   let months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
   let year = a.getFullYear()
   let month = months[a.getMonth()]
+  let monthNumber = a.getMonth()
   let date = a.getDate()
   let hour = a.getHours()
   let min = a.getMinutes() < 10 ? '0' + a.getMinutes() : a.getMinutes()
@@ -27,6 +28,7 @@ function timeConverter(UNIX_timestamp){
   let timeObject = {
     "date": date,
     "month": month,
+    "monthNumber": monthNumber,
     "year": year,
     "hour": hour,
     "hour12": hour12,
