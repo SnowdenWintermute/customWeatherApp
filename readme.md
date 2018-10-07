@@ -77,6 +77,12 @@ There were other bumps in the road, but eventually I got to the point where I co
 say I was pretty much done. From there, I spent some time cleaning up the CSS and
 JavaScript, adding comments and removing or rearranging things.
 
+Later that night I showed the finished product to my friend, who had some suggestions.
+The next day I had some spare time so I went about trying to implement one of his ideas,
+which was making six days display if the data was spread across six days, which it usually
+was. While trying to implement this I realized I was calling functions over and over
+unnecessarily. I was able to reduce this by storing the results of the functions in variables, then using the variables.
+
 TRADEOFFS:
 - Animations vs efficiency
   - I am a big fan of speed. I usually turn off animations in

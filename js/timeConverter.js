@@ -4,7 +4,7 @@ function timeConverter(UNIX_timestamp){
   let months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
   let year = a.getFullYear()
   let month = months[a.getMonth()]
-  let monthNumber = a.getMonth()
+  let monthNumber = a.getMonth()+1
   let date = a.getDate()
   let hour = a.getHours()
   let min = a.getMinutes() < 10 ? '0' + a.getMinutes() : a.getMinutes()
