@@ -6,24 +6,23 @@ function tempMinMax(weatherData){
   let reports = weatherData.list
   let minTemps = []
   let maxTemps = []
-  let currentDay = timeConverter(weatherData.list[0].dt).date
-  let currentDayTemps = []
+  let currentDate = timeConverter(weatherData.list[0].dt).date
+  let currentDateTemps = []
   //loop through all 3hour reports in the list
   for(report of reports){
     //get the date of current report to compare to last report
-    let reportDay = timeConverter(report.dt).date
+    let reportDate = timeConverter(report.dt).date
     //if current report is the same day as last report, push current report's temp into array for later comparisons
-    if(reportDay === currentDay || currentDay === ""){
-      currentDayTemps.push(report.main.temp)
-    }else{
-      //if new date, find min and max temps in currentDayTemps array and push them to min/max temps arrays
-      minTemps.push(Array.min(currentDayTemps))
-      maxTemps.push(Array.max(currentDayTemps))
+    if(reportDate === currentDate){ currentDateTemps.push(report.main.temp) }
+    //if new date (or last date in array), find min and max temps in currentDayTemps array and push them to min/max temps arrays
+    if(reportDate !== currentDate || reports.indexOf(report) === reports.length-1){
+      minTemps.push(Array.min(currentDateTemps))
+      maxTemps.push(Array.max(currentDateTemps))
       //reset the current day temps array with new day's temps
-      currentDayTemps = [report.main.temp]
+      currentDateTemps = [report.main.temp]
     }
     //set date to current report's date
-    currentDay = reportDay
+    currentDate = reportDate
   }
   return({minTemps, maxTemps})
 }

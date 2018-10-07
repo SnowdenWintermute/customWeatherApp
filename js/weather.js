@@ -38,26 +38,29 @@ function getWeather(city, country, lat, long){
   xhr.onload = function(){
     if(this.status === 200){
       let weatherData = JSON.parse(this.responseText)
+      let parsedApiInfo = parseApiInfo(weatherData)
+      let numberOfDates = parsedApiInfo.dates.length
       //create the 5 day Divs
-      createfiveDayDivs()
+      createfiveDayDivs(numberOfDates)
       //display city name
       fiveDayTitle.innerHTML = weatherData.city.name + " " + weatherData.city.country
       //fill the divs with weather info, remove any old search results
-      for(let i=0; i<5; i++){
+      for(let i=0; i<numberOfDates; i++){
         //put info in the five day divs
-        document.getElementById(`dayDivDate${i+1}`).innerHTML = parseApiInfo(weatherData).formattedDates[i]
-        document.getElementById(`dayDivDay${i+1}`).innerHTML = parseApiInfo(weatherData).weekdays[i]
-        document.getElementById(`dayDivDesc${i+1}`).innerHTML = capitalizeFirstLetter(parseApiInfo(weatherData).descriptions[i])
-        document.getElementById(`dayDivImg${i+1}`).src = `https://openweathermap.org/img/w/${parseApiInfo(weatherData).icons[i]}.png`
+        document.getElementById(`dayDivDate${i+1}`).innerHTML = parsedApiInfo.formattedDates[i]
+        document.getElementById(`dayDivDay${i+1}`).innerHTML = parsedApiInfo.weekdays[i]
+        document.getElementById(`dayDivDesc${i+1}`).innerHTML = capitalizeFirstLetter(parsedApiInfo.descriptions[i])
+        document.getElementById(`dayDivImg${i+1}`).src = `https://openweathermap.org/img/w/${parsedApiInfo.icons[i]}.png`
         //set daily high and low temps
-        let fTempMin = Math.round(1.8*(tempMinMax(weatherData).minTemps[i]-273) + 32)
-        let fTempMax = Math.round(1.8*(tempMinMax(weatherData).maxTemps[i]-273) + 32)
+        let minMaxTemps = tempMinMax(weatherData)
+        let fTempMin = Math.round(1.8*(minMaxTemps.minTemps[i]-273) + 32)
+        let fTempMax = Math.round(1.8*(minMaxTemps.maxTemps[i]-273) + 32)
         document.getElementById(`dayDivTemp${i+1}`).innerHTML = `${fTempMax}°F / ${fTempMin}°F`
         //set up the 'see hourly' buttons
         let dayDivDetails = document.getElementById(`dayDivDetails${i+1}`)
         dayDivDetails.innerHTML = "See Hourly"
         dayDivDetails.className = "dayDivDetails flex-center"
-        dayDivDetails.addEventListener("click", function(){ createHourDivs(weatherData, parseApiInfo(weatherData).dates[i], parseApiInfo(weatherData).formattedDates[i], i) })
+        dayDivDetails.addEventListener("click", function(){ createHourDivs(weatherData, parsedApiInfo.dates[i], parsedApiInfo.formattedDates[i], i) })
       }
     } else {
       //Display error if invalid data entered

@@ -1,9 +1,9 @@
 //creates five day forecast overview divs
-let createfiveDayDivs = function(){
+let createfiveDayDivs = function(numberOfDates){
   let fiveDaySections = document.getElementById('fiveDaySections')
   let myDF = document.createDocumentFragment()
 
-  for(let i=0; i<5; i++){
+  for(let i=0; i<numberOfDates; i++){
     let dayDiv = document.createElement('div')
     dayDiv.className = "dayDiv"
     dayDiv.id = `dayDiv${i+1}`

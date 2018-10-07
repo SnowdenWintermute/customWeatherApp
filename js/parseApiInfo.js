@@ -10,13 +10,14 @@ function parseApiInfo(weatherData){
   //loop through all three-hour reports in the list
   for(report of reports){
     //extract the date and hour from the unix timestamp
-    let reportDate = timeConverter(report.dt).date
-    let reportHour = timeConverter(report.dt).hour
-    let reportDateYear = timeConverter(report.dt).year
-    let reportDateMonth = timeConverter(report.dt).month
-    let reportDateMonthNumber = timeConverter(report.dt).monthNumber
-    let reportDateDay = timeConverter(report.dt).weekday
-    let reportDateFull = timeConverter(report.dt).full
+    let convertedTime = timeConverter(report.dt)
+    let reportDate = convertedTime.date
+    let reportHour = convertedTime.hour
+    let reportDateYear = convertedTime.year
+    let reportDateMonth = convertedTime.month
+    let reportDateMonthNumber = convertedTime.monthNumber
+    let reportDateDay = convertedTime.weekday
+    let reportDateFull = convertedTime.full
     let reportDateReformat = `${reportDateMonthNumber}/${reportDate}/${reportDateYear}`
     //push dates and weekdays to respective arrays
     if(dates === [] || currentDay !== reportDate){
