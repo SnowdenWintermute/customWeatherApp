@@ -25,29 +25,10 @@ function parseApiInfo(weatherData){
       dates.push(reportDate)
       weekdays.push(reportDateDay)
     }
-<<<<<<< HEAD
     //Get icon and description at 1400 hours utc (or whatever is available for the first day)
     if(reportHour === 14 || reportHour === 13 || icons.length === 0){
-=======
-    //Get icon and description at 1400 hours utc (or whatever is available for the first day and last day)
-    if(reportHour === 14 || icons.length === 0){
->>>>>>> 43516761f0b8d87c6a8bfce4f4d62191ee3855ae
       icons.push(report.weather[0].icon)
       descriptions.push(report.weather[0].description)
-    }else if(reportHour < 14 && icons.length === 5){
-      if(reportHour === 11){
-        icons.push(report.weather[0].icon)
-        descriptions.push(report.weather[0].description)
-      }else if(reportHour === 8){
-        icons.push(report.weather[0].icon)
-        descriptions.push(report.weather[0].description)
-      }else if (reportHour === 5) {
-        icons.push(report.weather[0].icon)
-        descriptions.push(report.weather[0].description)
-      }else if(reportHour === 2){
-        icons.push(report.weather[0].icon)
-        descriptions.push(report.weather[0].description)
-      }
     }
     //set this report's day as the "current day" to compare to in the loop
     currentDay = reportDate
