@@ -35,10 +35,13 @@ function getWeather(city, country, lat, long){
   //start the ajax request
   let xhr = new XMLHttpRequest()
   xhr.open('GET', fullUrl, true)
-  xhr.onload = function(){
-    if(this.status === 200){
+  //Show loading message
+  if(xhr.readyState === 1){ fiveDayTitle.innerHTML = "Connection to API established..."}
+  xhr.onreadystatechange = function(){
+      if(xhr.readyState === 2){ fiveDayTitle.innerHTML = "API request recieved..."}
+      if(xhr.readyState === 3){ fiveDayTitle.innerHTML = "Processing request..."}
+    if(this.readyState===4 && this.status === 200){
       let weatherData = JSON.parse(this.responseText)
-      console.log(weatherData);
       let parsedApiInfo = parseApiInfo(weatherData)
       let numberOfDates = parsedApiInfo.dates.length
       //create the 5 day Divs
@@ -51,7 +54,6 @@ function getWeather(city, country, lat, long){
         document.getElementById(`dayDivDate${i+1}`).innerHTML = parsedApiInfo.formattedDates[i]
         document.getElementById(`dayDivDay${i+1}`).innerHTML = parsedApiInfo.weekdays[i]
         document.getElementById(`dayDivDesc${i+1}`).innerHTML = parsedApiInfo.descriptions[i]
-        console.log(parsedApiInfo.descriptions);
         document.getElementById(`dayDivImg${i+1}`).src = `https://openweathermap.org/img/w/${parsedApiInfo.icons[i]}.png`
         //set daily high and low temps
         let minMaxTemps = tempMinMax(weatherData)
@@ -73,7 +75,6 @@ function getWeather(city, country, lat, long){
         fiveDayTitle.innerHTML = 'Invalid city name...'
         removeAllChildElements(document.getElementById('fiveDaySections'))
       }
-      console.log('error: xhr status not 200');
     }
   }
   xhr.send()
