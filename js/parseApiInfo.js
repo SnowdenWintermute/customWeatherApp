@@ -2,7 +2,7 @@ function parseApiInfo(weatherData){
   let reports = weatherData.list
   let weekdays = []
   let dates = []
-  let datesOriginal = []
+  let formattedDates = []
   let icons = []
   let descriptions = []
   let currentDay = ""
@@ -10,20 +10,23 @@ function parseApiInfo(weatherData){
   //loop through all three-hour reports in the list
   for(report of reports){
     //extract the date and hour from the unix timestamp
-    let reportDate = timeConverter(report.dt).date
-    let reportHour = timeConverter(report.dt).hour
-    let reportDateYear = timeConverter(report.dt).year
-    let reportDateMonth = timeConverter(report.dt).month
-    let reportDateDay = timeConverter(report.dt).weekday
-    let reportDateFull = timeConverter(report.dt).full
-    let reportDateReformat = `${reportDateMonth}/${reportDateDay}/${reportDateYear}`
+    let convertedTime = timeConverter(report.dt)
+    let reportDate = convertedTime.date
+    let reportHour = convertedTime.hour
+    let reportDateYear = convertedTime.year
+    let reportDateMonth = convertedTime.month
+    let reportDateMonthNumber = convertedTime.monthNumber
+    let reportDateDay = convertedTime.weekday
+    let reportDateFull = convertedTime.full
+    let reportDateReformat = `${reportDateMonthNumber}/${reportDate}/${reportDateYear}`
     //push dates and weekdays to respective arrays
     if(dates === [] || currentDay !== reportDate){
-      dates.push(reportDateFull.slice(0,10))
+      formattedDates.push(reportDateReformat)
+      dates.push(reportDate)
       weekdays.push(reportDateDay)
     }
     //Get icon and description at 1400 hours utc (or whatever is available for the first day)
-    if(reportHour === 14 || icons.length === 0){
+    if(reportHour === 14 || reportHour === 13 || icons.length === 0){
       icons.push(report.weather[0].icon)
       descriptions.push(report.weather[0].description)
     }
@@ -33,7 +36,7 @@ function parseApiInfo(weatherData){
     return({
             "weekdays": weekdays,
             "dates":dates,
-            "datesOriginal": datesOriginal,
+            "formattedDates": formattedDates,
             "icons": icons,
             "descriptions": descriptions
           })
